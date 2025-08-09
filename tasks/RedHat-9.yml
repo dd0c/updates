@@ -1,10 +1,5 @@
 ---
 
-- name: Make sure all needed packages are installed
-    ansible.builtin.dnf:
-    name: "needs-restarting"
-    state: latest
-
 - name: Upgrade all packages
   ansible.builtin.dnf:
     name: "*"
