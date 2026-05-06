@@ -1,5 +1,10 @@
 ---
 
+- name: Make sure all packages needed to asses a reboot after updates are installed
+  ansible.builtin.dnf:
+    name: "yum-utils"
+    state: latest
+
 - name: Upgrade all packages
   ansible.builtin.dnf:
     name: "*"
