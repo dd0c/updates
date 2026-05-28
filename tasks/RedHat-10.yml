@@ -1,9 +1,14 @@
 ---
 
-- name: Make sure all packages needed to asses a reboot after updates are installed
+- name: Make sure all packages needed to asses a reboot is needed after updates are installed
   ansible.builtin.dnf:
     name: "yum-utils"
     state: latest
+
+- name: Make sure only two kernels are installed (instead of the standard three for Rhel10)
+  ansible.builtin.template:
+    src: templates/etc/dnf/dnf.conf.j2
+    dest: /etc/dnf/dnf.conf
 
 - name: Upgrade all packages
   ansible.builtin.dnf:
